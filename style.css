@@ -28,9 +28,21 @@
             flex-direction: column;
         }
 
+   
+        /* Indicateur visuel simple pour la navbar */
+        .nav-status {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+
+
         /* --- 2. NAVBAR --- */
         .navbar {
-            background-color: var(--primary);
+            background-color:black;
             color: var(--white);
             padding: 1rem 2rem;
             display: flex;
@@ -49,6 +61,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+     /* Style pour l'image du logo PNG */
+        .navbar-logo img {
+            height: 30px; /* Taille de l'image ajustée */
+            width: auto;
+            object-fit: contain;
         }
 
         /* Indicateur visuel simple pour la navbar */
@@ -193,7 +211,7 @@
             animation: spin 1s linear infinite;
         }
         .odc{
-            color: black;
+            color: var(--primary);
         }
 
         @keyframes spin {
