@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support de formation </title>
+    <!-- Importation d'une police moderne -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css"> 
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <!-- SVG adapté au nouvel orange -->
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span class="odc"> ODC </span>Club Fianarantsoa
+        </div>
+        <div class="nav-status">02 au 05 Décembre 2025</div>
+    </nav>
+
+    <!-- Contenu Principal Centré -->
+    <main class="main-container">
+        
+        <div class="title-section">
+            <h1>Supports de Formation</h1>
+            <p class="subtitle">Maîtrisez le système d'exploitation Linux</p>
+        </div>
+
+        <div class="button-grid">
+            
+            <!-- Bouton 1 : ODC Club -->
+            <!-- Ajout de l'attribut data-filesize pour la taille simulée du fichier -->
+            <a href="assets/support_de_presentation.pdf"  class="download-card" 
+               onclick="downloadFile(event, this)"  target="_blank" rel="noopener noreferrer" data-filesize="750 Ko" >
+                <div class="icon-box">
+                    <!-- Icône PDF Générique -->
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-3 15v-4h2v4h-2zm3-8V3.5L18.5 9H14z"/></svg>
+                </div>
+                <div class="text-container">
+                    <div class="btn-text">Formation ODC Club</div>
+                    <!-- Le sous-texte sera rempli par JavaScript -->
+                    <div class="btn-subtext"></div>
+                </div>
+                <div class="loading-overlay"><div class="spinner"></div></div>
+            </a>
+
+            <!-- Bouton 2 : Linux -->
+            <!-- Ajout de l'attribut  target="_blank" rel="noopener noreferrer" data-filesize pour la taille simulée du fichier -->
+            <a href="assets/enonce_de_tp.pdf"  class="download-card" 
+               onclick="downloadFile(event, this)"  target="_blank" rel="noopener noreferrer" data-filesize="52 Ko">
+                <div class="icon-box">
+                    <!-- Icône PDF Générique -->
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-3 15v-4h2v4h-2zm3-8V3.5L18.5 9H14z"/></svg>
+                </div>
+                <div class="text-container">
+                    <div class="btn-text">Maîtrisez le système Linux</div>
+                    <!-- Le sous-texte sera rempli par JavaScript -->
+                    <div class="btn-subtext"></div>
+                </div>
+                <div class="loading-overlay"><div class="spinner"></div></div>
+            </a>
+
+            <!-- Bouton 3 : Ressources -->
+            <!-- Ajout de l'attribut  target="_blank" rel="noopener noreferrer" data-filesize pour la taille simulée du fichier -->
+            <a href="assets/support_de_commande.pdf"  class="download-card" 
+               onclick="downloadFile(event, this)"  target="_blank" rel="noopener noreferrer" data-filesize="1135 Ko">
+                <div class="icon-box">
+                    <!-- Icône PDF Générique -->
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-3 15v-4h2v4h-2zm3-8V3.5L18.5 9H14z"/></svg>
+                </div>
+                <div class="text-container">
+                    <div class="btn-text">Outils Complémentaires</div>
+                    <!-- Le sous-texte sera rempli par JavaScript -->
+                    <div class="btn-subtext"></div>
+                </div>
+                <div class="loading-overlay"><div class="spinner"></div></div>
+            </a>
+
+        </div>
+    </main>
+
+   <script>
+        /**
+         * Fonction exécutée au chargement pour lire les tailles des fichiers
+         * et les afficher dans la carte de téléchargement.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.download-card');
+            cards.forEach(card => {
+                const fileSize = card.getAttribute('data-filesize');
+                const subtextElement = card.querySelector('.btn-subtext');
+                
+                if (fileSize && subtextElement) {
+                    // Afficher le format et la taille
+                    subtextElement.textContent = `PDF - ${fileSize}`;
+                }
+            });
+        });
+
+        /**
+         * Gère le clic sur le bouton pour afficher l'animation de chargement (UX)
+         * puis déclenche le téléchargement en utilisant le chemin d'accès réel (assets/)
+         */
+        function downloadFile(event, element) {
+            // Empêche le comportement de lien par défaut (téléchargement immédiat)
+            event.preventDefault();
+
+            // Récupère les chemins du fichier
+            const downloadUrl = element.getAttribute('href');
+            const downloadName = element.getAttribute('download');
+
+            // 1. Active l'animation de chargement (UX)
+            element.classList.add('loading');
+
+            // 2. Simule un délai réseau (1.5 secondes)
+            setTimeout(() => {
+                // 3. Désactive l'animation
+                element.classList.remove('loading');
+                
+                // 4. Déclenche le téléchargement réel en utilisant le chemin 'assets/...'
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = downloadName;
+                
+                document.body.appendChild(link);
+                link.click(); // Déclenche le téléchargement du fichier
+                document.body.removeChild(link);
+
+            }, 1500); // Durée de l'animation de chargement
+        }
+    </script>
+</body>
+</html>
